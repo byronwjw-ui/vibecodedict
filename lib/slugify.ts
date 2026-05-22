@@ -1,0 +1,86 @@
+const OVERRIDES: Record<string, string> = {
+  "Next.js": "next-js",
+  "Node.js": "node-js",
+  "package.json": "package-json",
+  "node_modules": "node-modules",
+  ".gitignore": "gitignore",
+  "CI/CD": "ci-cd",
+  "Open-source Model": "open-source-model",
+  "Closed-source Model": "closed-source-model",
+  "REST API": "rest-api",
+  "Top-p": "top-p",
+  "Text to Speech": "text-to-speech",
+  "Speech to Text": "speech-to-text",
+  "Chain of Thought": "chain-of-thought",
+  "E2E Test": "e2e-test",
+  "Pull Request Review": "pull-request-review",
+  "Pull Request": "pull-request",
+  "Try Catch": "try-catch",
+  "If Statement": "if-statement",
+  "Else Statement": "else-statement",
+  "Function Calling": "function-calling",
+  "Tool Calling": "tool-calling",
+  "Vector Database": "vector-database",
+  "Context Window": "context-window",
+  "System Prompt": "system-prompt",
+  "User Prompt": "user-prompt",
+  "API Key": "api-key",
+  "Prompt Engineering": "prompt-engineering",
+  "Context Engineering": "context-engineering",
+  "AI Workflow": "ai-workflow",
+  "AI Automation": "ai-automation",
+  "AI Assistant": "ai-assistant",
+  "Knowledge Base": "knowledge-base",
+  "Model Distillation": "model-distillation",
+  "Vision Model": "vision-model",
+  "Reasoning Model": "reasoning-model",
+  "Rate Limit": "rate-limit",
+  "Prompt Injection": "prompt-injection",
+  "Model Provider": "model-provider",
+  "AI IDE": "ai-ide",
+  "Code Agent": "code-agent",
+  "Pair Programming": "pair-programming",
+  "Code Review": "code-review",
+  "Stack Trace": "stack-trace",
+  "Error Message": "error-message",
+  "User Story": "user-story",
+  "Acceptance Criteria": "acceptance-criteria",
+  "Task Breakdown": "task-breakdown",
+  "Project Scaffold": "project-scaffold",
+  "Repository Context": "repository-context",
+  "Dev Server": "dev-server",
+  "Hot Reload": "hot-reload",
+  "Unit Test": "unit-test",
+  "Integration Test": "integration-test",
+  "Commit Message": "commit-message",
+  "Tech Debt": "tech-debt",
+  "File Tree": "file-tree",
+  "Return Value": "return-value",
+  "Data Structure": "data-structure",
+  "Design Pattern": "design-pattern",
+  "Functional Programming": "functional-programming",
+  "Full-stack": "full-stack",
+  "Responsive Design": "responsive-design",
+  "Landing Page": "landing-page",
+  "Environment Variable": "environment-variable",
+  "GitHub Actions": "github-actions",
+  "SSH Key": "ssh-key",
+  "Edge Function": "edge-function",
+  "User Flow": "user-flow",
+  "Conversion Rate": "conversion-rate",
+  "GitHub Copilot": "github-copilot",
+};
+
+export function slugify(name: string): string {
+  if (OVERRIDES[name]) return OVERRIDES[name];
+  return name
+    .toLowerCase()
+    .replace(/\./g, "-")
+    .replace(/_/g, "-")
+    .replace(/\//g, "-")
+    .replace(/[^a-z0-9\-\s]/g, "")
+    .trim()
+    .replace(/\s+/g, "-")
+    .replace(/-+/g, "-")
+    .replace(/^-|-$/g, "");
+}
