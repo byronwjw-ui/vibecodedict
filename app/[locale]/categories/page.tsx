@@ -7,8 +7,8 @@ import { CategoryCard } from "@/components/CategoryCard";
 import { SITE_NAME, SITE_URL } from "@/lib/constants";
 import { buildAlternates } from "@/lib/seo";
 
-export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }): Promise<Metadata> {
-  const { locale } = await params;
+export function generateMetadata({ params }: { params: { locale: string } }): Metadata {
+  const { locale } = params;
   if (!isValidLocale(locale)) return {};
   const title = locale === "zh" ? `分类浏览 | ${SITE_NAME}` : `Categories · ${SITE_NAME}`;
   return {
@@ -18,8 +18,8 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
   };
 }
 
-export default async function CategoriesPage({ params }: { params: Promise<{ locale: string }> }) {
-  const { locale } = await params;
+export default function CategoriesPage({ params }: { params: { locale: string } }) {
+  const { locale } = params;
   if (!isValidLocale(locale)) notFound();
   const loc = locale as Locale;
   const t = getDictionary(loc);
