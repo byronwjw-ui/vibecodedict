@@ -5,8 +5,8 @@ import type { Locale } from "@/types/term";
 import { SITE_NAME, SITE_URL } from "@/lib/constants";
 import { buildAlternates } from "@/lib/seo";
 
-export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }): Promise<Metadata> {
-  const { locale } = await params;
+export function generateMetadata({ params }: { params: { locale: string } }): Metadata {
+  const { locale } = params;
   if (!isValidLocale(locale)) return {};
   const title = locale === "zh" ? `关于 | ${SITE_NAME}` : `About · ${SITE_NAME}`;
   return {
@@ -16,8 +16,8 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
   };
 }
 
-export default async function AboutPage({ params }: { params: Promise<{ locale: string }> }) {
-  const { locale } = await params;
+export default function AboutPage({ params }: { params: { locale: string } }) {
+  const { locale } = params;
   if (!isValidLocale(locale)) notFound();
   const loc = locale as Locale;
   const t = getDictionary(loc);
@@ -28,7 +28,7 @@ export default async function AboutPage({ params }: { params: Promise<{ locale: 
         <>
           <p>Vibe Coding Dictionary 是一个为小白、Vibe Coder、非科班开发者、AI 产品经理和 AI 创业者准备的中英双语 AI 编程词典。</p>
           <p>我们不是另一个百科，也不是简单翻译。每个词条都回答几个问题：它是什么？为什么重要？在 Vibe Coding 中怎么用？小白怎么理解？常见误区是什么？下一步学什么？</p>
-          <p>第一版不接 AI API、不需要登录、不收费，专心做好“看懂”这件事。</p>
+          <p>第一版不接 AI API、不需要登录、不收费，专心做好"看懂"这件事。</p>
         </>
       ) : (
         <>
