@@ -1,0 +1,74 @@
+[
+  {
+    "slug": "vibe-coding-beginner",
+    "terms": ["ai", "llm", "prompt", "claude-code", "terminal", "shell", "git", "github", "api", "json", "frontend", "backend", "deployment"],
+    "zh": {
+      "title": "Vibe Coding 入门路径",
+      "description": "适合小白从 0 理解 AI 编程和 Vibe Coding 的核心概念。"
+    },
+    "en": {
+      "title": "Vibe Coding Beginner Path",
+      "description": "A beginner-friendly path to understand AI coding and Vibe Coding."
+    }
+  },
+  {
+    "slug": "claude-code-beginner",
+    "terms": ["claude-code", "project-scaffold", "file-tree", "terminal", "npm", "package-json", "dev-server", "error-message", "debug", "git", "commit", "deployment"],
+    "zh": {
+      "title": "Claude Code 小白路径",
+      "description": "从零上手 Claude Code：理解项目结构、终端、npm、调试与部署。"
+    },
+    "en": {
+      "title": "Claude Code Beginner Path",
+      "description": "Get started with Claude Code: project structure, terminal, npm, debugging, and deployment."
+    }
+  },
+  {
+    "slug": "ai-app-development",
+    "terms": ["llm", "api", "api-key", "token", "prompt", "embedding", "vector-database", "rag", "agent", "authentication", "database", "deployment"],
+    "zh": {
+      "title": "AI 应用开发路径",
+      "description": "从 LLM 调用到 RAG、Agent、认证与部署的 AI 应用全链路。"
+    },
+    "en": {
+      "title": "AI App Development Path",
+      "description": "From calling LLMs to building RAG and agent apps with auth and deployment."
+    }
+  },
+  {
+    "slug": "shell-beginner",
+    "terms": ["terminal", "shell", "command", "pwd", "ls", "cd", "mkdir", "touch", "cat", "rm", "grep", "chmod", "sudo", "curl", "env"],
+    "zh": {
+      "title": "Shell 小白路径",
+      "description": "掌握常用命令行与 Shell 基础，变得不怕黑窗口。"
+    },
+    "en": {
+      "title": "Shell Beginner Path",
+      "description": "Master common CLI commands and shell basics so the terminal stops scaring you."
+    }
+  },
+  {
+    "slug": "web-development-beginner",
+    "terms": ["html", "css", "javascript", "typescript", "react", "next-js", "frontend", "backend", "http", "json", "rest-api", "authentication", "deployment"],
+    "zh": {
+      "title": "Web 开发入门路径",
+      "description": "从 HTML/CSS 到 React、Next.js、REST API、认证与部署。"
+    },
+    "en": {
+      "title": "Web Development Beginner Path",
+      "description": "From HTML/CSS to React, Next.js, REST API, auth and deployment."
+    }
+  },
+  {
+    "slug": "ai-product-manager",
+    "terms": ["ai", "llm", "agent", "rag", "embedding", "mcp", "api", "saas", "mvp", "user-flow", "conversion-rate", "retention"],
+    "zh": {
+      "title": "AI 产品经理技术路径",
+      "description": "AI 产品经理必需掌握的技术与产品词汇。"
+    },
+    "en": {
+      "title": "AI Product Manager Path",
+      "description": "Technical and product vocabulary every AI PM should know."
+    }
+  }
+]

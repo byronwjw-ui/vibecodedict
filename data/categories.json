@@ -1,0 +1,93 @@
+[
+  {
+    "slug": "ai-basics",
+    "icon": "Brain",
+    "count": 60,
+    "zh": {
+      "name": "AI 基础",
+      "description": "理解大模型、提示词、Agent、RAG、Embedding 等 AI 核心概念。"
+    },
+    "en": {
+      "name": "AI Basics",
+      "description": "Core AI concepts like LLMs, prompts, agents, RAG, and embeddings."
+    }
+  },
+  {
+    "slug": "vibe-coding",
+    "icon": "Sparkles",
+    "count": 45,
+    "zh": {
+      "name": "Vibe Coding",
+      "description": "Claude Code、Cursor、AI IDE 等 AI 编程工具与工作流。"
+    },
+    "en": {
+      "name": "Vibe Coding",
+      "description": "AI coding tools and workflows: Claude Code, Cursor, AI IDEs."
+    }
+  },
+  {
+    "slug": "programming-basics",
+    "icon": "Code2",
+    "count": 55,
+    "zh": {
+      "name": "编程基础",
+      "description": "变量、函数、数据结构、错误处理等通用编程概念。"
+    },
+    "en": {
+      "name": "Programming Basics",
+      "description": "Variables, functions, data structures, errors and other general programming concepts."
+    }
+  },
+  {
+    "slug": "web-development",
+    "icon": "Globe",
+    "count": 45,
+    "zh": {
+      "name": "Web 开发",
+      "description": "前后端、HTTP、React、Next.js、认证、部署等 Web 开发词汇。"
+    },
+    "en": {
+      "name": "Web Development",
+      "description": "Frontend, backend, HTTP, React, Next.js, auth, and deployment vocabulary."
+    }
+  },
+  {
+    "slug": "shell-git-dev-environment",
+    "icon": "Terminal",
+    "count": 55,
+    "zh": {
+      "name": "Shell / Git / 开发环境",
+      "description": "终端、命令行、Git、GitHub、Docker 等开发环境必备词汇。"
+    },
+    "en": {
+      "name": "Shell, Git & Dev Env",
+      "description": "Terminal, CLI, Git, GitHub, Docker and dev environment essentials."
+    }
+  },
+  {
+    "slug": "database-backend-deployment",
+    "icon": "Database",
+    "count": 30,
+    "zh": {
+      "name": "数据库 / 后端 / 部署",
+      "description": "SQL、NoSQL、Supabase、Vercel、Serverless、CI/CD 等后端与部署词汇。"
+    },
+    "en": {
+      "name": "Database, Backend & Deployment",
+      "description": "SQL, NoSQL, Supabase, Vercel, serverless, CI/CD and backend deployment terms."
+    }
+  },
+  {
+    "slug": "product-startup",
+    "icon": "Rocket",
+    "count": 10,
+    "zh": {
+      "name": "产品 / 创业",
+      "description": "MVP、SaaS、转化率、留存等产品与创业词汇。"
+    },
+    "en": {
+      "name": "Product & Startup",
+      "description": "MVP, SaaS, conversion, retention and other product/startup terms."
+    }
+  }
+]
