@@ -11,7 +11,90 @@ export function getOppositeLocale(locale: Locale): Locale {
 
 export { DEFAULT_LOCALE, LOCALES };
 
-export const dictionaries = {
+export interface Dictionary {
+  siteName: string;
+  tagline: string;
+  nav: {
+    terms: string;
+    categories: string;
+    paths: string;
+    about: string;
+  };
+  home: {
+    heroTitle: string;
+    heroSubtitle: string;
+    searchPlaceholder: string;
+    popular: string;
+    categories: string;
+    paths: string;
+    mustRead: string;
+    recent: string;
+    whyTitle: string;
+    whyBody: string;
+  };
+  term: {
+    english: string;
+    chinese: string;
+    category: string;
+    difficulty: string;
+    tags: string;
+    oneLiner: string;
+    beginner: string;
+    technical: string;
+    whyItMatters: string;
+    vibeUsage: string;
+    useCases: string;
+    codeExample: string;
+    misunderstandings: string;
+    related: string;
+    learningPath: string;
+    promptExample: string;
+    copyPrompt: string;
+    copied: string;
+    updatedAt: string;
+  };
+  list: {
+    title: string;
+    filterCategory: string;
+    filterDifficulty: string;
+    allCategories: string;
+    allDifficulties: string;
+    searchInList: string;
+    empty: string;
+    total: (n: number) => string;
+  };
+  categories: {
+    title: string;
+    subtitle: string;
+    termCount: (n: number) => string;
+  };
+  paths: {
+    title: string;
+    subtitle: string;
+    stepLabel: (n: number) => string;
+    termCount: (n: number) => string;
+    back: string;
+  };
+  difficulty: {
+    beginner: string;
+    intermediate: string;
+    advanced: string;
+  };
+  about: {
+    title: string;
+  };
+  common: {
+    readMore: string;
+    backHome: string;
+    search: string;
+    noResults: string;
+  };
+  footer: {
+    tagline: string;
+  };
+}
+
+const dictionaries: Record<Locale, Dictionary> = {
   zh: {
     siteName: "Vibe Coding Dictionary",
     tagline: "给小白和 Vibe Coder 的 AI 编程词典",
@@ -180,9 +263,7 @@ export const dictionaries = {
       tagline: "Bilingual AI & coding glossary. No login, no paywall, no fluff.",
     },
   },
-} as const;
-
-export type Dictionary = (typeof dictionaries)["zh"];
+};
 
 export function getDictionary(locale: Locale): Dictionary {
   return dictionaries[locale];
