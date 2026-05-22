@@ -69,6 +69,8 @@ const OVERRIDES: Record<string, string> = {
   "User Flow": "user-flow",
   "Conversion Rate": "conversion-rate",
   "GitHub Copilot": "github-copilot",
+  // Disambiguate PATH (env var) from Path (filesystem path)
+  "PATH": "path-env",
 };
 
 export function slugify(name: string): string {

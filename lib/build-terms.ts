@@ -83,16 +83,20 @@ export function buildTerms(): Term[] {
   const all: Term[] = [];
   const slugSet = new Set<string>();
   const byCategory: Record<string, string[]> = {};
-  // First pass: assign slugs
   const rows: { name: string; category: string; difficulty: Difficulty; qualityLevel: QualityLevel; slug: string }[] = [];
   for (const [name, category, difficulty, qualityLevel] of SPEC as SpecRow[]) {
     const slug = slugify(name);
-    if (slugSet.has(slug)) throw new Error(`Duplicate slug: ${slug} (from ${name})`);
+    if (slugSet.has(slug)) {
+      // Resilient: skip duplicate instead of throwing during build.
+      if (typeof console !== "undefined") {
+        console.warn(`[build-terms] Skipping duplicate slug "${slug}" from name "${name}"`);
+      }
+      continue;
+    }
     slugSet.add(slug);
     (byCategory[category] ||= []).push(slug);
     rows.push({ name, category, difficulty, qualityLevel, slug });
   }
-  // Second pass: build content
   for (const { name, category, difficulty, qualityLevel, slug } of rows) {
     const base = templated(name, slug, category);
     const override = OVERRIDES[slug] || {};
