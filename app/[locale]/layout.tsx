@@ -4,18 +4,18 @@ import { Footer } from "@/components/Footer";
 import { isValidLocale } from "@/lib/i18n";
 import type { Locale } from "@/types/term";
 
-export async function generateStaticParams() {
+export function generateStaticParams() {
   return [{ locale: "zh" }, { locale: "en" }];
 }
 
-export default async function LocaleLayout({
+export default function LocaleLayout({
   children,
   params,
 }: {
   children: React.ReactNode;
-  params: Promise<{ locale: string }>;
+  params: { locale: string };
 }) {
-  const { locale } = await params;
+  const { locale } = params;
   if (!isValidLocale(locale)) notFound();
   const loc = locale as Locale;
   return (
