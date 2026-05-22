@@ -8,8 +8,8 @@ import { TermsBrowser } from "./TermsBrowser";
 import { SITE_NAME, SITE_URL } from "@/lib/constants";
 import { buildAlternates } from "@/lib/seo";
 
-export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }): Promise<Metadata> {
-  const { locale } = await params;
+export function generateMetadata({ params }: { params: { locale: string } }): Metadata {
+  const { locale } = params;
   if (!isValidLocale(locale)) return {};
   const title = locale === "zh" ? `所有词条 | ${SITE_NAME}` : `All Terms · ${SITE_NAME}`;
   const description = locale === "zh" ? "浏览中英双语 AI 编程词典的全部词条。" : "Browse all bilingual entries in Vibe Coding Dictionary.";
@@ -20,8 +20,8 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
   };
 }
 
-export default async function TermsListPage({ params }: { params: Promise<{ locale: string }> }) {
-  const { locale } = await params;
+export default function TermsListPage({ params }: { params: { locale: string } }) {
+  const { locale } = params;
   if (!isValidLocale(locale)) notFound();
   const loc = locale as Locale;
   const t = getDictionary(loc);
