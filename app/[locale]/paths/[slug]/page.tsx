@@ -29,8 +29,11 @@ export default async function PathDetail({ params }: { params: Promise<{ locale:
   const loc = locale as Locale;
   const t = getDictionary(loc);
   const path = getPathBySlug(slug);
-  if (!path) notFound();
-  const terms = getLearningPathTerms(path.terms);
+  if (!path) {
+    notFound();
+  }
+  const pth = path!;
+  const terms = getLearningPathTerms(pth.terms);
   return (
     <div className="max-w-3xl mx-auto px-4 py-10">
       <nav className="text-sm text-slate-500 mb-4">
@@ -38,10 +41,10 @@ export default async function PathDetail({ params }: { params: Promise<{ locale:
         <span className="mx-1">/</span>
         <Link href={`/${loc}/paths`} className="hover:text-slate-900">{t.nav.paths}</Link>
         <span className="mx-1">/</span>
-        <span className="text-slate-900">{path[loc].title}</span>
+        <span className="text-slate-900">{pth[loc].title}</span>
       </nav>
-      <h1 className="text-3xl md:text-4xl font-bold text-slate-900">{path[loc].title}</h1>
-      <p className="text-slate-600 mt-2 mb-8">{path[loc].description}</p>
+      <h1 className="text-3xl md:text-4xl font-bold text-slate-900">{pth[loc].title}</h1>
+      <p className="text-slate-600 mt-2 mb-8">{pth[loc].description}</p>
       <ol className="space-y-3">
         {terms.map((term, i) => (
           <li key={term.slug}>

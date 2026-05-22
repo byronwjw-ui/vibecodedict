@@ -2,19 +2,14 @@ import type { Metadata } from "next";
 import type { Locale, Term, Category, LearningPath } from "@/types/term";
 import { SITE_NAME, SITE_URL } from "./constants";
 
-function altLang(locale: Locale): Locale {
-  return locale === "zh" ? "en" : "zh";
-}
-
-export function buildAlternates(pathWithinLocale: string) {
-  // pathWithinLocale should start with '/'; e.g. '/terms/api'
+export function buildAlternates(pathWithinLocale: string): Metadata["alternates"] {
   return {
     languages: {
       zh: `${SITE_URL}/zh${pathWithinLocale}`,
       en: `${SITE_URL}/en${pathWithinLocale}`,
       "x-default": `${SITE_URL}/zh${pathWithinLocale}`,
     },
-  } as const;
+  };
 }
 
 export function termMetadata(term: Term, locale: Locale): Metadata {

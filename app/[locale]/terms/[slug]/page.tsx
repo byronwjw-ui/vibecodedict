@@ -27,10 +27,13 @@ export default async function TermDetailPage({ params }: { params: Promise<{ loc
   const { locale, slug } = await params;
   if (!isValidLocale(locale)) notFound();
   const term = getTermBySlug(slug);
-  if (!term) notFound();
+  if (!term) {
+    notFound();
+  }
+  const trm = term!;
   return (
     <div className="max-w-6xl mx-auto px-4 py-10">
-      <TermDetail term={term} locale={locale as Locale} />
+      <TermDetail term={trm} locale={locale as Locale} />
     </div>
   );
 }

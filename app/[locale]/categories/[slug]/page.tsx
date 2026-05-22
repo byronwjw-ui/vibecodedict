@@ -30,7 +30,10 @@ export default async function CategoryDetail({ params }: { params: Promise<{ loc
   const loc = locale as Locale;
   const t = getDictionary(loc);
   const category = getCategoryBySlug(slug);
-  if (!category) notFound();
+  if (!category) {
+    notFound();
+  }
+  const cat = category!;
   const terms = getTermsByCategory(slug);
   return (
     <div className="max-w-6xl mx-auto px-4 py-10">
@@ -39,10 +42,10 @@ export default async function CategoryDetail({ params }: { params: Promise<{ loc
         <span className="mx-1">/</span>
         <Link href={`/${loc}/categories`} className="hover:text-slate-900">{t.nav.categories}</Link>
         <span className="mx-1">/</span>
-        <span className="text-slate-900">{category[loc].name}</span>
+        <span className="text-slate-900">{cat[loc].name}</span>
       </nav>
-      <h1 className="text-3xl md:text-4xl font-bold text-slate-900">{category[loc].name}</h1>
-      <p className="text-slate-600 mt-2 mb-2">{category[loc].description}</p>
+      <h1 className="text-3xl md:text-4xl font-bold text-slate-900">{cat[loc].name}</h1>
+      <p className="text-slate-600 mt-2 mb-2">{cat[loc].description}</p>
       <p className="text-xs text-slate-500 mb-8">{t.categories.termCount(terms.length)}</p>
       <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-3">
         {terms.map((term) => (<TermCard key={term.slug} term={term} locale={loc} />))}

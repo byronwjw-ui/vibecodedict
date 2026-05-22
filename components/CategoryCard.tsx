@@ -2,12 +2,15 @@ import Link from "next/link";
 import type { Category, Locale } from "@/types/term";
 import { getDictionary } from "@/lib/i18n";
 import * as Icons from "lucide-react";
+import type { LucideIcon } from "lucide-react";
+
+type IconMap = Record<string, LucideIcon>;
 
 export function CategoryCard({ category, locale }: { category: Category; locale: Locale }) {
   const c = category[locale];
   const t = getDictionary(locale);
-  // @ts-expect-error — dynamic icon access
-  const Icon = Icons[category.icon] || Icons.Folder;
+  const iconMap = Icons as unknown as IconMap;
+  const Icon: LucideIcon = iconMap[category.icon] || Icons.Folder;
   return (
     <Link
       href={`/${locale}/categories/${category.slug}`}
