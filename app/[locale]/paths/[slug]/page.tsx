@@ -7,7 +7,7 @@ import { getAllPaths, getPathBySlug } from "@/lib/categories";
 import { getLearningPathTerms } from "@/lib/terms";
 import { pathMetadata } from "@/lib/seo";
 
-export async function generateStaticParams() {
+export function generateStaticParams() {
   const out: { locale: string; slug: string }[] = [];
   for (const locale of ["zh", "en"]) {
     for (const p of getAllPaths()) out.push({ locale, slug: p.slug });
@@ -15,16 +15,16 @@ export async function generateStaticParams() {
   return out;
 }
 
-export async function generateMetadata({ params }: { params: Promise<{ locale: string; slug: string }> }): Promise<Metadata> {
-  const { locale, slug } = await params;
+export function generateMetadata({ params }: { params: { locale: string; slug: string } }): Metadata {
+  const { locale, slug } = params;
   if (!isValidLocale(locale)) return {};
   const path = getPathBySlug(slug);
   if (!path) return {};
   return pathMetadata(path, locale as Locale);
 }
 
-export default async function PathDetail({ params }: { params: Promise<{ locale: string; slug: string }> }) {
-  const { locale, slug } = await params;
+export default function PathDetail({ params }: { params: { locale: string; slug: string } }) {
+  const { locale, slug } = params;
   if (!isValidLocale(locale)) notFound();
   const loc = locale as Locale;
   const t = getDictionary(loc);
