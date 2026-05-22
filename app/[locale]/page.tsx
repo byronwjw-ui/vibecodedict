@@ -13,14 +13,14 @@ import { CategoryCard } from "@/components/CategoryCard";
 import { LearningPathCard } from "@/components/LearningPathCard";
 import { homeMetadata } from "@/lib/seo";
 
-export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }): Promise<Metadata> {
-  const { locale } = await params;
+export function generateMetadata({ params }: { params: { locale: string } }): Metadata {
+  const { locale } = params;
   if (!isValidLocale(locale)) return {};
   return homeMetadata(locale as Locale);
 }
 
-export default async function HomePage({ params }: { params: Promise<{ locale: string }> }) {
-  const { locale } = await params;
+export default function HomePage({ params }: { params: { locale: string } }) {
+  const { locale } = params;
   if (!isValidLocale(locale)) notFound();
   const loc = locale as Locale;
   const t = getDictionary(loc);

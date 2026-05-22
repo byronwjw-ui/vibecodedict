@@ -6,7 +6,7 @@ import { getAllTerms, getTermBySlug } from "@/lib/terms";
 import { TermDetail } from "@/components/TermDetail";
 import { termMetadata } from "@/lib/seo";
 
-export async function generateStaticParams() {
+export function generateStaticParams() {
   const out: { locale: string; slug: string }[] = [];
   const terms = getAllTerms();
   for (const locale of ["zh", "en"]) {
@@ -15,16 +15,16 @@ export async function generateStaticParams() {
   return out;
 }
 
-export async function generateMetadata({ params }: { params: Promise<{ locale: string; slug: string }> }): Promise<Metadata> {
-  const { locale, slug } = await params;
+export function generateMetadata({ params }: { params: { locale: string; slug: string } }): Metadata {
+  const { locale, slug } = params;
   if (!isValidLocale(locale)) return {};
   const term = getTermBySlug(slug);
   if (!term) return {};
   return termMetadata(term, locale as Locale);
 }
 
-export default async function TermDetailPage({ params }: { params: Promise<{ locale: string; slug: string }> }) {
-  const { locale, slug } = await params;
+export default function TermDetailPage({ params }: { params: { locale: string; slug: string } }) {
+  const { locale, slug } = params;
   if (!isValidLocale(locale)) notFound();
   const term = getTermBySlug(slug);
   if (!term) {

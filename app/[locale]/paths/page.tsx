@@ -7,8 +7,8 @@ import { LearningPathCard } from "@/components/LearningPathCard";
 import { SITE_NAME, SITE_URL } from "@/lib/constants";
 import { buildAlternates } from "@/lib/seo";
 
-export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }): Promise<Metadata> {
-  const { locale } = await params;
+export function generateMetadata({ params }: { params: { locale: string } }): Metadata {
+  const { locale } = params;
   if (!isValidLocale(locale)) return {};
   const title = locale === "zh" ? `学习路径 | ${SITE_NAME}` : `Learning Paths · ${SITE_NAME}`;
   return {
@@ -18,8 +18,8 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
   };
 }
 
-export default async function PathsPage({ params }: { params: Promise<{ locale: string }> }) {
-  const { locale } = await params;
+export default function PathsPage({ params }: { params: { locale: string } }) {
+  const { locale } = params;
   if (!isValidLocale(locale)) notFound();
   const loc = locale as Locale;
   const t = getDictionary(loc);

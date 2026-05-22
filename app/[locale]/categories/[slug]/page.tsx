@@ -8,7 +8,7 @@ import { getTermsByCategory } from "@/lib/terms";
 import { TermCard } from "@/components/TermCard";
 import { categoryMetadata } from "@/lib/seo";
 
-export async function generateStaticParams() {
+export function generateStaticParams() {
   const out: { locale: string; slug: string }[] = [];
   for (const locale of ["zh", "en"]) {
     for (const c of getAllCategories()) out.push({ locale, slug: c.slug });
@@ -16,16 +16,16 @@ export async function generateStaticParams() {
   return out;
 }
 
-export async function generateMetadata({ params }: { params: Promise<{ locale: string; slug: string }> }): Promise<Metadata> {
-  const { locale, slug } = await params;
+export function generateMetadata({ params }: { params: { locale: string; slug: string } }): Metadata {
+  const { locale, slug } = params;
   if (!isValidLocale(locale)) return {};
   const category = getCategoryBySlug(slug);
   if (!category) return {};
   return categoryMetadata(category, locale as Locale);
 }
 
-export default async function CategoryDetail({ params }: { params: Promise<{ locale: string; slug: string }> }) {
-  const { locale, slug } = await params;
+export default function CategoryDetail({ params }: { params: { locale: string; slug: string } }) {
+  const { locale, slug } = params;
   if (!isValidLocale(locale)) notFound();
   const loc = locale as Locale;
   const t = getDictionary(loc);
