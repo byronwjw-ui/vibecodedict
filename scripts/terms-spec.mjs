@@ -1,9 +1,6 @@
-// 300-term spec. Format: [name, category, difficulty, qualityLevel]
-// Slug is derived in generator via slugify().
-// Categories must match data/categories.json.
-
+// Mirror of data/terms-spec.ts for use by Node-based scripts (validate-data.mjs).
+// Keep in sync.
 export const SPEC = [
-  // ai-basics (60)
   ["AI", "ai-basics", "beginner", 1],
   ["LLM", "ai-basics", "beginner", 1],
   ["Model", "ai-basics", "beginner", 2],
@@ -19,7 +16,7 @@ export const SPEC = [
   ["Fine-tuning", "ai-basics", "intermediate", 1],
   ["Inference", "ai-basics", "intermediate", 1],
   ["Temperature", "ai-basics", "intermediate", 1],
-  ["Top-p", "ai-basics", "intermediate", 2],
+  ["Top-p", "ai-basics", "intermediate", 3],
   ["Function Calling", "ai-basics", "intermediate", 1],
   ["Tool Calling", "ai-basics", "intermediate", 1],
   ["MCP", "ai-basics", "intermediate", 1],
@@ -28,16 +25,16 @@ export const SPEC = [
   ["API Key", "ai-basics", "beginner", 1],
   ["OpenAI", "ai-basics", "beginner", 1],
   ["Claude", "ai-basics", "beginner", 1],
-  ["Gemini", "ai-basics", "beginner", 1],
-  ["DeepSeek", "ai-basics", "beginner", 1],
+  ["Gemini", "ai-basics", "beginner", 2],
+  ["DeepSeek", "ai-basics", "beginner", 2],
   ["Transformer", "ai-basics", "advanced", 2],
   ["Neural Network", "ai-basics", "intermediate", 2],
   ["Training", "ai-basics", "intermediate", 2],
   ["Dataset", "ai-basics", "intermediate", 2],
   ["Multimodal", "ai-basics", "intermediate", 2],
-  ["Vision Model", "ai-basics", "intermediate", 2],
-  ["Speech to Text", "ai-basics", "intermediate", 2],
-  ["Text to Speech", "ai-basics", "intermediate", 2],
+  ["Vision Model", "ai-basics", "intermediate", 3],
+  ["Speech to Text", "ai-basics", "intermediate", 3],
+  ["Text to Speech", "ai-basics", "intermediate", 3],
   ["Reasoning Model", "ai-basics", "intermediate", 2],
   ["Chain of Thought", "ai-basics", "intermediate", 2],
   ["Evaluation", "ai-basics", "intermediate", 2],
@@ -64,13 +61,11 @@ export const SPEC = [
   ["Open-source Model", "ai-basics", "intermediate", 2],
   ["Closed-source Model", "ai-basics", "intermediate", 2],
   ["Model Provider", "ai-basics", "intermediate", 2],
-
-  // vibe-coding (45)
   ["Vibe Coding", "vibe-coding", "beginner", 1],
   ["Claude Code", "vibe-coding", "beginner", 1],
   ["Cursor", "vibe-coding", "beginner", 1],
   ["Windsurf", "vibe-coding", "beginner", 1],
-  ["Trae", "vibe-coding", "beginner", 2],
+  ["Trae", "vibe-coding", "beginner", 3],
   ["Replit", "vibe-coding", "beginner", 2],
   ["Bolt", "vibe-coding", "beginner", 2],
   ["Lovable", "vibe-coding", "beginner", 2],
@@ -81,7 +76,7 @@ export const SPEC = [
   ["Code Agent", "vibe-coding", "intermediate", 1],
   ["Pair Programming", "vibe-coding", "beginner", 2],
   ["Code Review", "vibe-coding", "intermediate", 1],
-  ["Refactor", "vibe-coding", "intermediate", 1],
+  ["Refactor", "vibe-coding", "intermediate", 2],
   ["Debug", "vibe-coding", "beginner", 1],
   ["Stack Trace", "vibe-coding", "intermediate", 1],
   ["Error Message", "vibe-coding", "beginner", 2],
@@ -111,8 +106,6 @@ export const SPEC = [
   ["Architecture", "vibe-coding", "intermediate", 1],
   ["Component", "vibe-coding", "beginner", 2],
   ["File Tree", "vibe-coding", "beginner", 2],
-
-  // programming-basics (55)
   ["Variable", "programming-basics", "beginner", 1],
   ["Constant", "programming-basics", "beginner", 2],
   ["Function", "programming-basics", "beginner", 1],
@@ -168,8 +161,6 @@ export const SPEC = [
   ["Design Pattern", "programming-basics", "advanced", 3],
   ["OOP", "programming-basics", "intermediate", 3],
   ["Functional Programming", "programming-basics", "intermediate", 3],
-
-  // web-development (45)
   ["Frontend", "web-development", "beginner", 1],
   ["Backend", "web-development", "beginner", 1],
   ["Full-stack", "web-development", "beginner", 1],
@@ -215,8 +206,6 @@ export const SPEC = [
   ["SEO", "web-development", "beginner", 2],
   ["Landing Page", "web-development", "beginner", 3],
   ["Deployment", "web-development", "beginner", 1],
-
-  // shell-git-dev-environment (55)
   ["Terminal", "shell-git-dev-environment", "beginner", 1],
   ["Shell", "shell-git-dev-environment", "beginner", 1],
   ["Bash", "shell-git-dev-environment", "beginner", 2],
@@ -272,8 +261,6 @@ export const SPEC = [
   ["Docker", "shell-git-dev-environment", "intermediate", 2],
   ["Dockerfile", "shell-git-dev-environment", "intermediate", 2],
   ["Container", "shell-git-dev-environment", "intermediate", 2],
-
-  // database-backend-deployment (30)
   ["Database", "database-backend-deployment", "beginner", 1],
   ["SQL", "database-backend-deployment", "beginner", 1],
   ["NoSQL", "database-backend-deployment", "intermediate", 2],
@@ -304,16 +291,14 @@ export const SPEC = [
   ["Render", "database-backend-deployment", "beginner", 2],
   ["Cloudflare", "database-backend-deployment", "intermediate", 2],
   ["AWS", "database-backend-deployment", "intermediate", 2],
-
-  // product-startup (10)
   ["MVP", "product-startup", "beginner", 1],
   ["SaaS", "product-startup", "beginner", 1],
   ["B2B", "product-startup", "beginner", 2],
   ["B2C", "product-startup", "beginner", 2],
   ["User Flow", "product-startup", "beginner", 2],
-  ["Wireframe", "product-startup", "beginner", 2],
-  ["Prototype", "product-startup", "beginner", 2],
+  ["Wireframe", "product-startup", "beginner", 3],
+  ["Prototype", "product-startup", "beginner", 3],
   ["Conversion Rate", "product-startup", "beginner", 2],
   ["Retention", "product-startup", "beginner", 2],
-  ["Churn", "product-startup", "beginner", 2]
+  ["Churn", "product-startup", "beginner", 3],
 ];
