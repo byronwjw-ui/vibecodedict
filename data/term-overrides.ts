@@ -1,16 +1,17 @@
 // Hand-written content overrides keyed by slug.
 // Anything missing falls back to templated content in lib/build-terms.ts.
 import type { LocalizedTermContent } from "@/types/term";
+import type { TermOverride } from "./overrides/_types";
 
-export interface TermOverride {
-  tags?: string[];
-  relatedTerms?: string[];
-  learningPath?: string[];
-  zh?: Partial<LocalizedTermContent>;
-  en?: Partial<LocalizedTermContent>;
-}
+// Top 50 handwritten entries — one file per term, see data/overrides/.
+import { claudeCode } from "./overrides/claude-code";
 
-export const OVERRIDES: Record<string, TermOverride> = {
+const MODULAR: Record<string, TermOverride> = {
+  "claude-code": claudeCode,
+};
+
+// Legacy inline overrides (kept for now; will be migrated into modular files).
+const LEGACY: Record<string, TermOverride> = {
   ai: {
     tags: ["ai", "core"],
     relatedTerms: ["llm", "agent", "model", "prompt", "neural-network"],
@@ -25,7 +26,7 @@ export const OVERRIDES: Record<string, TermOverride> = {
       commonMisunderstandings: [
         "AI 不等于 LLM，LLM 只是 AI 的一种",
         "AI 不是无所不能，它会出错、会幻觉",
-        "AI 不是真的‘理解’你说的话，它是在做概率预测",
+        "AI 不是真的'理解'你说的话，它是在做概率预测",
       ],
       promptExample: "请用小白能理解的方式解释 AI，并举一个 Vibe Coding 中调用 AI 的例子。",
     },
@@ -50,12 +51,12 @@ export const OVERRIDES: Record<string, TermOverride> = {
     learningPath: ["ai", "llm", "token", "prompt", "context-window"],
     zh: {
       oneLiner: "LLM 是用海量文本训练出来、能理解和生成语言的大模型。",
-      beginnerExplanation: "LLM 就像一个看过无数本书的人，你问它任何问题，它都能根据‘读过的内容’给你一个看起来合理的回答。",
+      beginnerExplanation: "LLM 就像一个看过无数本书的人，你问它任何问题，它都能根据'读过的内容'给你一个看起来合理的回答。",
       technicalExplanation: "LLM 是基于 Transformer 架构、用大规模文本语料训练的语言模型，通过预测下一个 token 来生成文本。",
       whyItMatters: "LLM 是 ChatGPT、Claude、Gemini、DeepSeek 的底层引擎，也是 Vibe Coding 的核心动力。",
       vibeCodingUsage: "Claude Code 背后是 Claude 这个 LLM；Cursor 背后是 GPT、Claude 等多种 LLM。让 LLM 帮你写代码就是 Vibe Coding 的常规操作。",
       useCases: ["写代码", "写文档", "翻译", "总结长文", "Agent 推理"],
-      commonMisunderstandings: ["LLM 不是搜索引擎，它没有实时联网", "LLM 不会真的‘思考’，它在做概率预测", "LLM 会幻觉，回答需要核实"],
+      commonMisunderstandings: ["LLM 不是搜索引擎，它没有实时联网", "LLM 不会真的'思考'，它在做概率预测", "LLM 会幻觉，回答需要核实"],
       promptExample: "请用小白能理解的方式解释 LLM，并说明它和搜索引擎的区别。",
     },
     en: {
@@ -81,7 +82,7 @@ export const OVERRIDES: Record<string, TermOverride> = {
       vibeCodingUsage: "告诉 Claude Code、Cursor 你要做什么、项目背景是什么、限制是什么，都是在写 Prompt。",
       useCases: ["让 AI 写一个页面", "让 AI 修复 bug", "让 AI 总结长文档", "让 AI 生成单元测试"],
       commonMisunderstandings: ["Prompt 越长越好是错的，关键是清楚不是长", "什么背景都不补充是主要报错原因", "认为 AI 能猜你的意思——它不会"],
-      promptExample: "请用一个具体例子解释什么是 Prompt，并对比一个“坏 Prompt”和“好 Prompt”的差别。",
+      promptExample: "请用一个具体例子解释什么是 Prompt，并对比一个"坏 Prompt"和"好 Prompt"的差别。",
     },
     en: {
       oneLiner: "A prompt is the input you give an AI, which determines how it understands the task and what it outputs.",
@@ -92,31 +93,6 @@ export const OVERRIDES: Record<string, TermOverride> = {
       useCases: ["Ask AI to build a page", "Ask AI to fix a bug", "Ask AI to summarize long docs", "Ask AI to write unit tests"],
       commonMisunderstandings: ["Longer prompts are not always better — clarity matters more", "Skipping context is the top cause of bad output", "Assuming AI can guess what you mean — it cannot"],
       promptExample: "With a concrete example, explain what a prompt is, then contrast a 'bad prompt' with a 'good prompt'.",
-    },
-  },
-  "claude-code": {
-    tags: ["vibe-coding", "tool", "agent"],
-    relatedTerms: ["claude", "cursor", "ai-ide", "code-agent", "terminal"],
-    learningPath: ["claude-code", "project-scaffold", "terminal", "git", "deployment"],
-    zh: {
-      oneLiner: "Claude Code 是 Anthropic 推出的、在终端里跟你协作写代码的 AI 代码助手。",
-      beginnerExplanation: "Claude Code 就像一个住在终端里的资深工程师。你告诉它“帮我加个登录页”，它会看项目、改文件、跑命令、调 bug。",
-      technicalExplanation: "Claude Code 是在本地终端运行的 CLI 工具，以 Claude 为背后模型，能读写文件、执行 shell 命令、调用外部工具，以 agent 方式完成编程任务。",
-      whyItMatters: "它是当前最能带你入门 Vibe Coding 的工具之一，代表了“AI 代码 Agent”这一趋势。",
-      vibeCodingUsage: "初始化项目、加功能、重构、写测试、修 bug、接 API、部署上线——都可以交给 Claude Code。",
-      useCases: ["从 0 创建一个 Next.js 项目", "为现有项目加一个新页面", "修复一个生产环境 bug", "接入 Supabase 或 Stripe"],
-      commonMisunderstandings: ["以为 Claude Code 只会聊天，实际上它会真的改你本地文件", "认为它全能——它需要清楚的 Prompt 和上下文", "忘了检查它的代码变更就直接提交"],
-      promptExample: "请解释 Claude Code 是什么、能做什么、不能做什么，并举一个适合小白使用它的场景。",
-    },
-    en: {
-      oneLiner: "Claude Code is Anthropic's CLI agent that pair-programs with you inside your terminal.",
-      beginnerExplanation: "Claude Code is like a senior engineer living in your terminal. Tell it 'add a login page' and it will read the project, change files, run commands, and debug.",
-      technicalExplanation: "Claude Code is a CLI tool that runs locally, uses Claude as its model, and can read/write files, run shell commands, and call external tools to complete coding tasks as an agent.",
-      whyItMatters: "It is one of the best on-ramps into Vibe Coding today, representing the broader 'AI code agent' trend.",
-      vibeCodingUsage: "Scaffolding projects, adding features, refactoring, writing tests, fixing bugs, wiring APIs, deploying — all hand-off-able to Claude Code.",
-      useCases: ["Scaffold a Next.js project from zero", "Add a page to an existing project", "Fix a production bug", "Integrate Supabase or Stripe"],
-      commonMisunderstandings: ["Assuming it only chats — it actually edits your files", "Assuming it is all-knowing — it still needs clear prompts and context", "Committing its changes without reviewing"],
-      promptExample: "Explain what Claude Code is, what it can and cannot do, and give one beginner-friendly use case.",
     },
   },
   api: {
@@ -147,3 +123,10 @@ export const OVERRIDES: Record<string, TermOverride> = {
     },
   },
 };
+
+// Modular wins over legacy when the same slug appears in both.
+export const OVERRIDES: Record<string, TermOverride> = { ...LEGACY, ...MODULAR };
+
+// Re-export for any external consumer.
+export type { TermOverride };
+export type { LocalizedTermContent };
