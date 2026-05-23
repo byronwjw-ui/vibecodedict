@@ -5,9 +5,27 @@ import type { TermOverride } from "./overrides/_types";
 
 // Top 50 handwritten entries — one file per term, see data/overrides/.
 import { claudeCode } from "./overrides/claude-code";
+import { cursor } from "./overrides/cursor";
+import { windsurf } from "./overrides/windsurf";
+import { githubCopilot } from "./overrides/github-copilot";
+import { v0 } from "./overrides/v0";
+import { bolt } from "./overrides/bolt";
+import { replitAgent } from "./overrides/replit-agent";
+import { lovable } from "./overrides/lovable";
+import { devin } from "./overrides/devin";
+import { chatgpt } from "./overrides/chatgpt";
 
 const MODULAR: Record<string, TermOverride> = {
   "claude-code": claudeCode,
+  cursor: cursor,
+  windsurf: windsurf,
+  "github-copilot": githubCopilot,
+  v0: v0,
+  bolt: bolt,
+  "replit-agent": replitAgent,
+  lovable: lovable,
+  devin: devin,
+  chatgpt: chatgpt,
 };
 
 // Legacy inline overrides (kept for now; will be migrated into modular files).
