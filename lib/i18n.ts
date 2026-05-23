@@ -52,6 +52,12 @@ export interface Dictionary {
     copyPrompt: string;
     copied: string;
     updatedAt: string;
+    // v2 labels
+    whatItLooksLike: string;
+    analogy: string;
+    whatYouCanDo: string;
+    quickStart: string;
+    pitfalls: string;
   };
   list: {
     title: string;
@@ -131,13 +137,18 @@ const dictionaries: Record<Locale, Dictionary> = {
       vibeUsage: "在 Vibe Coding 中怎么用",
       useCases: "常见使用场景",
       codeExample: "代码例子",
-      misunderstandings: "常见误区",
+      misunderstandings: "容易踩的坑",
       related: "相关词条",
       learningPath: "推荐学习路径",
       promptExample: "可复制 Prompt",
       copyPrompt: "复制 Prompt",
       copied: "已复制",
       updatedAt: "更新于",
+      whatItLooksLike: "它长什么样",
+      analogy: "类比理解",
+      whatYouCanDo: "你能用它做什么",
+      quickStart: "5 分钟上手",
+      pitfalls: "容易踩的坑",
     },
     list: {
       title: "所有词条",
@@ -215,13 +226,18 @@ const dictionaries: Record<Locale, Dictionary> = {
       vibeUsage: "How it is used in Vibe Coding",
       useCases: "Common use cases",
       codeExample: "Code example",
-      misunderstandings: "Common misunderstandings",
+      misunderstandings: "Common pitfalls",
       related: "Related terms",
       learningPath: "Recommended learning path",
       promptExample: "Copyable prompt",
       copyPrompt: "Copy Prompt",
       copied: "Copied",
       updatedAt: "Updated",
+      whatItLooksLike: "What it looks like",
+      analogy: "Analogy",
+      whatYouCanDo: "What you can do with it",
+      quickStart: "5-minute quick start",
+      pitfalls: "Common pitfalls",
     },
     list: {
       title: "All Terms",

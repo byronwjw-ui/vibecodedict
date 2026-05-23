@@ -42,33 +42,80 @@ export function TermDetail({ term, locale }: { term: Term; locale: Locale }) {
         </div>
       </header>
 
+      {/* 1. One-liner */}
       <section className="mb-8 p-5 rounded-xl bg-brand-50/60 border border-brand-100">
         <div className="text-xs font-medium text-brand-700 uppercase tracking-wider">{t.term.oneLiner}</div>
         <p className="mt-1 text-lg text-slate-900">{c.oneLiner}</p>
       </section>
 
+      {/* 2. What it looks like — concrete example (v2) */}
+      {c.whatItLooksLike ? (
+        <Block title={t.term.whatItLooksLike}>
+          <div className="rounded-lg bg-slate-900 text-slate-100 p-4 overflow-x-auto">
+            <pre className="text-sm whitespace-pre-wrap"><code>{c.whatItLooksLike}</code></pre>
+          </div>
+        </Block>
+      ) : null}
+
+      {/* 3. Analogy (v2) */}
+      {c.analogy ? (
+        <Block title={t.term.analogy}>
+          <p className="text-slate-700">{c.analogy}</p>
+        </Block>
+      ) : null}
+
+      {/* 4. Beginner explanation */}
       <Block title={t.term.beginner}><p>{c.beginnerExplanation}</p></Block>
-      <Block title={t.term.technical}><p>{c.technicalExplanation}</p></Block>
+
+      {/* 5. What you can do (v2) */}
+      {c.whatYouCanDo && c.whatYouCanDo.length ? (
+        <Block title={t.term.whatYouCanDo}>
+          <ul className="list-disc pl-5 space-y-1">
+            {c.whatYouCanDo.map((u, i) => (<li key={i}>{u}</li>))}
+          </ul>
+        </Block>
+      ) : null}
+
+      {/* 6. Why it matters */}
       <Block title={t.term.whyItMatters}><p>{c.whyItMatters}</p></Block>
+
+      {/* 7. Vibe Coding usage */}
       <Block title={t.term.vibeUsage}><p>{c.vibeCodingUsage}</p></Block>
 
-      <Block title={t.term.useCases}>
-        <ul className="list-disc pl-5 space-y-1">
-          {c.useCases.map((u, i) => (<li key={i}>{u}</li>))}
-        </ul>
-      </Block>
+      {/* 8. Quick start (v2) */}
+      {c.quickStart && c.quickStart.length ? (
+        <Block title={t.term.quickStart}>
+          <ol className="list-decimal pl-5 space-y-1">
+            {c.quickStart.map((s, i) => (<li key={i}>{s}</li>))}
+          </ol>
+        </Block>
+      ) : null}
 
-      {c.codeExample ? (
+      {/* 9. Use cases (legacy, kept for template terms) */}
+      {!c.whatYouCanDo && c.useCases && c.useCases.length ? (
+        <Block title={t.term.useCases}>
+          <ul className="list-disc pl-5 space-y-1">
+            {c.useCases.map((u, i) => (<li key={i}>{u}</li>))}
+          </ul>
+        </Block>
+      ) : null}
+
+      {/* 10. Legacy code example (only if no whatItLooksLike) */}
+      {!c.whatItLooksLike && c.codeExample ? (
         <Block title={t.term.codeExample}>
           <pre className="text-sm rounded-lg bg-slate-900 text-slate-100 p-4 overflow-x-auto"><code>{c.codeExample}</code></pre>
         </Block>
       ) : null}
 
-      <Block title={t.term.misunderstandings}>
+      {/* 11. Pitfalls */}
+      <Block title={t.term.pitfalls}>
         <ul className="list-disc pl-5 space-y-1">
           {c.commonMisunderstandings.map((u, i) => (<li key={i}>{u}</li>))}
         </ul>
       </Block>
+
+      {/* 12. Technical explanation (moved to end — advanced reading) */}
+      <Block title={t.term.technical}><p className="text-slate-600 text-sm">{c.technicalExplanation}</p></Block>
 
       {related.length ? (
         <Block title={t.term.related}>
@@ -96,7 +143,7 @@ export function TermDetail({ term, locale }: { term: Term; locale: Locale }) {
 
       <Block title={t.term.promptExample}>
         <div className="rounded-xl border border-slate-200 bg-slate-50 p-4">
-          <pre className="text-sm text-slate-800 mb-3">{c.promptExample}</pre>
+          <pre className="text-sm text-slate-800 mb-3 whitespace-pre-wrap">{c.promptExample}</pre>
           <CopyPromptButton text={c.promptExample} locale={locale} />
         </div>
       </Block>
