@@ -17,6 +17,12 @@ export interface LocalizedTermContent {
   codeExample?: string;
   commonMisunderstandings: string[];
   promptExample: string;
+
+  // v2 fields (optional, used by handwritten Top 50)
+  whatItLooksLike?: string;
+  analogy?: string;
+  whatYouCanDo?: string[];
+  quickStart?: string[];
 }
 
 export interface Term {
