@@ -3,7 +3,7 @@
 import type { LocalizedTermContent } from "@/types/term";
 import type { TermOverride } from "./overrides/_types";
 
-// Top 50 handwritten entries — one file per term, see data/overrides/.
+// Group 1 — AI editing tools
 import { claudeCode } from "./overrides/claude-code";
 import { cursor } from "./overrides/cursor";
 import { windsurf } from "./overrides/windsurf";
@@ -15,7 +15,25 @@ import { lovable } from "./overrides/lovable";
 import { devin } from "./overrides/devin";
 import { chatgpt } from "./overrides/chatgpt";
 
+// Group 2 — core concepts (vibe-coding, prompt-engineering, mcp, rag, agent,
+// token, context-window, embedding, fine-tuning, sdk, api-key, hallucination,
+// system-prompt). ai/llm/prompt/api stay in LEGACY below for now.
+import { vibeCoding } from "./overrides/vibe-coding";
+import { promptEngineering } from "./overrides/prompt-engineering";
+import { mcp } from "./overrides/mcp";
+import { rag } from "./overrides/rag";
+import { agent } from "./overrides/agent";
+import { token } from "./overrides/token";
+import { contextWindow } from "./overrides/context-window";
+import { embedding } from "./overrides/embedding";
+import { fineTuning } from "./overrides/fine-tuning";
+import { sdk } from "./overrides/sdk";
+import { apiKey } from "./overrides/api-key";
+import { hallucination } from "./overrides/hallucination";
+import { systemPrompt } from "./overrides/system-prompt";
+
 const MODULAR: Record<string, TermOverride> = {
+  // Group 1
   "claude-code": claudeCode,
   cursor: cursor,
   windsurf: windsurf,
@@ -26,9 +44,23 @@ const MODULAR: Record<string, TermOverride> = {
   lovable: lovable,
   devin: devin,
   chatgpt: chatgpt,
+  // Group 2
+  "vibe-coding": vibeCoding,
+  "prompt-engineering": promptEngineering,
+  mcp: mcp,
+  rag: rag,
+  agent: agent,
+  token: token,
+  "context-window": contextWindow,
+  embedding: embedding,
+  "fine-tuning": fineTuning,
+  sdk: sdk,
+  "api-key": apiKey,
+  hallucination: hallucination,
+  "system-prompt": systemPrompt,
 };
 
-// Legacy inline overrides (kept for now; will be migrated into modular files).
+// Legacy inline overrides (kept for now; ai/llm/prompt/api already had quality content).
 const LEGACY: Record<string, TermOverride> = {
   ai: {
     tags: ["ai", "core"],
