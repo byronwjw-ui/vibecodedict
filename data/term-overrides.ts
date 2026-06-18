@@ -3,7 +3,7 @@
 import type { LocalizedTermContent } from "@/types/term";
 import type { TermOverride } from "./overrides/_types";
 
-// Group 1 — AI editing tools
+// ===== Group 1: AI editing tools (10) =====
 import { claudeCode } from "./overrides/claude-code";
 import { cursor } from "./overrides/cursor";
 import { windsurf } from "./overrides/windsurf";
@@ -15,9 +15,7 @@ import { lovable } from "./overrides/lovable";
 import { devin } from "./overrides/devin";
 import { chatgpt } from "./overrides/chatgpt";
 
-// Group 2 — core concepts (vibe-coding, prompt-engineering, mcp, rag, agent,
-// token, context-window, embedding, fine-tuning, sdk, api-key, hallucination,
-// system-prompt). ai/llm/prompt/api stay in LEGACY below for now.
+// ===== Group 2: Core concepts (13) =====
 import { vibeCoding } from "./overrides/vibe-coding";
 import { promptEngineering } from "./overrides/prompt-engineering";
 import { mcp } from "./overrides/mcp";
@@ -31,6 +29,39 @@ import { sdk } from "./overrides/sdk";
 import { apiKey } from "./overrides/api-key";
 import { hallucination } from "./overrides/hallucination";
 import { systemPrompt } from "./overrides/system-prompt";
+
+// ===== Group 3: Web fundamentals (10) =====
+import { html } from "./overrides/html";
+import { css } from "./overrides/css";
+import { javascript } from "./overrides/javascript";
+import { json } from "./overrides/json";
+import { http } from "./overrides/http";
+import { frontend } from "./overrides/frontend";
+import { backend } from "./overrides/backend";
+import { database } from "./overrides/database";
+import { git } from "./overrides/git";
+import { github } from "./overrides/github";
+
+// ===== Group 4: Deployment & toolchain (8) =====
+import { vercel } from "./overrides/vercel";
+import { netlify } from "./overrides/netlify";
+import { supabase } from "./overrides/supabase";
+import { environmentVariables } from "./overrides/environment-variables";
+import { domain } from "./overrides/domain";
+import { ssl } from "./overrides/ssl";
+import { ciCd } from "./overrides/ci-cd";
+import { webhook } from "./overrides/webhook";
+
+// ===== Group 5: Daily terms (9) =====
+import { ide } from "./overrides/ide";
+import { terminal } from "./overrides/terminal";
+import { repository } from "./overrides/repository";
+import { branch } from "./overrides/branch";
+import { commit } from "./overrides/commit";
+import { pullRequest } from "./overrides/pull-request";
+import { shell } from "./overrides/shell";
+import { framework } from "./overrides/framework";
+import { npm } from "./overrides/npm";
 
 const MODULAR: Record<string, TermOverride> = {
   // Group 1
@@ -58,9 +89,39 @@ const MODULAR: Record<string, TermOverride> = {
   "api-key": apiKey,
   hallucination: hallucination,
   "system-prompt": systemPrompt,
+  // Group 3
+  html: html,
+  css: css,
+  javascript: javascript,
+  json: json,
+  http: http,
+  frontend: frontend,
+  backend: backend,
+  database: database,
+  git: git,
+  github: github,
+  // Group 4
+  vercel: vercel,
+  netlify: netlify,
+  supabase: supabase,
+  "environment-variables": environmentVariables,
+  domain: domain,
+  ssl: ssl,
+  "ci-cd": ciCd,
+  webhook: webhook,
+  // Group 5
+  ide: ide,
+  terminal: terminal,
+  repository: repository,
+  branch: branch,
+  commit: commit,
+  "pull-request": pullRequest,
+  shell: shell,
+  framework: framework,
+  npm: npm,
 };
 
-// Legacy inline overrides (kept for now; ai/llm/prompt/api already had quality content).
+// Legacy inline overrides (kept; ai/llm/prompt/api already had quality content).
 const LEGACY: Record<string, TermOverride> = {
   ai: {
     tags: ["ai", "core"],
@@ -132,7 +193,7 @@ const LEGACY: Record<string, TermOverride> = {
       vibeCodingUsage: "告诉 Claude Code、Cursor 你要做什么、项目背景是什么、限制是什么，都是在写 Prompt。",
       useCases: ["让 AI 写一个页面", "让 AI 修复 bug", "让 AI 总结长文档", "让 AI 生成单元测试"],
       commonMisunderstandings: ["Prompt 越长越好是错的，关键是清楚不是长", "什么背景都不补充是主要报错原因", "认为 AI 能猜你的意思——它不会"],
-      promptExample: "请用一个具体例子解释什么是 Prompt，并对比一个"坏 Prompt"和"好 Prompt"的差别。",
+      promptExample: "请用一个具体例子解释什么是 Prompt，并对比一个坏 Prompt 和好 Prompt 的差别。",
     },
     en: {
       oneLiner: "A prompt is the input you give an AI, which determines how it understands the task and what it outputs.",
